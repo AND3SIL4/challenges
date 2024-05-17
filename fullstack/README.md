@@ -22,6 +22,12 @@ This project contains the fullstack application, it can recibe a csv file and st
 
 ![search and filter](image-4.png)
 
+## Usage
+
+1. Clone the repository
+2. run `pnpm install`
+3. run `pnpm run dev`
+
 ## Technologies used
 
 - Typescript
