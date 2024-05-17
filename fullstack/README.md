@@ -1,4 +1,26 @@
-# This is the challenge did by Midudev
+# This is a challenge for a junior test full stack
+
+This project contains the fullstack application, it can recibe a csv file and store in a local storage and send to the back office and then the user can search through the csv file and matching the pattern o letter that he needs to get
+
+## Main screen
+
+![main screen](image.png)
+
+## Select the file
+
+![Select file](image-1.png)
+
+## Upload file
+
+![upload file](image-2.png)
+
+## Message and initial information
+
+![message and initial information](image-3.png)
+
+## Search and filter typing a text
+
+![search and filter](image-4.png)
 
 ## Technologies used
 
@@ -8,7 +30,7 @@
 
 ## Dependencies used
 
-- express  and types
+- express and types
 - cors and types
 - ts-node and types
 - multer and types
