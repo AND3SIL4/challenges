@@ -69,18 +69,18 @@ function App() {
   return (
     <>
       <Toaster />
-      <h1>Challenge: upload CSV + search </h1>
+      <h1>Upload CSV + search </h1>
       {showForm && (
         <form onSubmit={handleSubmit}>
-          <label htmlFor="">
-            <input
-              disabled={appStatus === APP_STATUS.UPLOADING}
-              name="file"
-              onChange={handleInputChange}
-              type="file"
-              accept=".csv"
-            />
-          </label>
+          <label htmlFor="load-file">Cargar archivo</label>
+          <input
+            id="load-file"
+            disabled={appStatus === APP_STATUS.UPLOADING}
+            name="file"
+            onChange={handleInputChange}
+            type="file"
+            accept=".csv"
+          />
           {showButton && (
             <button disabled={appStatus === APP_STATUS.UPLOADING}>
               {TEXT_STATUS[appStatus]}

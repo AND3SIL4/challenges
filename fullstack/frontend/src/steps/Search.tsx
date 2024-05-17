@@ -3,6 +3,7 @@ import { Data } from "../types";
 import { toast } from "sonner";
 import { useDebounce } from "@uidotdev/usehooks";
 import { searchFile } from "../services/search.ts";
+import "../styles/Search.css";
 
 const DEBOUNDTIMER = 200;
 
@@ -47,6 +48,7 @@ export const Search = ({ initialData }: { initialData: Data }) => {
     <>
       <form>
         <input
+          id="input-text"
           onChange={handleSearch}
           type="search"
           placeholder="Buscar información..."
@@ -56,14 +58,18 @@ export const Search = ({ initialData }: { initialData: Data }) => {
       <ul>
         {data.map((row) => (
           <li key={row.id}>
-            <article>
-              {Object.entries(row).map(([key, value]) => (
-                <p key={key}>
-                  <strong>{key}: </strong>
-                  {value}
-                </p>
-              ))}
-            </article>
+            <table>
+              <tr>
+                {Object.keys(row).map((key) => (
+                  <th key={key}>{key}</th>
+                ))}
+              </tr>
+              <tr>
+                {Object.values(row).map((value) => (
+                  <td>{value}</td>
+                ))}
+              </tr>
+            </table>
           </li>
         ))}
       </ul>
