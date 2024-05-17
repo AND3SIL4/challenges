@@ -14,6 +14,7 @@
 - multer and types
 - convert-csv-to-json and types
 - soonner
+- Use de bounce hooks 'useDeBounce' (@uidotdev/usehooks)
 
 ## Configurar eslintrc
 
@@ -25,5 +26,9 @@
 3. Move vite (eslintrc.cjs) config to the root of the repository
 
 4. Add node option in true in the file previously added
+
+5. Crea workspace (pnpm-workspace.yaml) and pnpm install --filter [package_name] [command_execution]
+
+6. Run the packages with only one command (pnpm --filter '**' dev ) and then add to the main script
 
 ```

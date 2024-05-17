@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { Data } from "../types";
 import { toast } from "sonner";
+import { useDebounce } from "@uidotdev/usehooks";
 import { searchFile } from "../services/search.ts";
+
+const DEBOUNDTIMER = 200;
 
 export const Search = ({ initialData }: { initialData: Data }) => {
   const [data, setData] = useState<Data>(initialData);
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>(() => {
+    const searchParam = new URLSearchParams(window.location.pathname);
+    return searchParam.get("q") ?? "";
+  });
+
+  const deboundSearch = useDebounce(search, DEBOUNDTIMER);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -14,18 +22,18 @@ export const Search = ({ initialData }: { initialData: Data }) => {
   //Use initial hook
   useEffect(() => {
     const newPathName =
-      search === "" ? window.location.pathname : `?q=${search}`;
+      deboundSearch === "" ? window.location.pathname : `?q=${deboundSearch}`;
     window.history.pushState({}, "", newPathName);
-  }, [search]);
+  }, [deboundSearch]);
 
   // llamar a la api para filtrar los estados
   useEffect(() => {
-    if (!search) {
+    if (!deboundSearch) {
       setData(initialData);
       return;
     }
     //Call Api
-    searchFile(search).then((response) => {
+    searchFile(deboundSearch).then((response) => {
       const [err, newData] = response;
       if (err) {
         toast.error(err.message);
@@ -33,7 +41,7 @@ export const Search = ({ initialData }: { initialData: Data }) => {
       }
       if (newData) setData(newData);
     });
-  }, [search, initialData]);
+  }, [deboundSearch, initialData]);
 
   return (
     <>
@@ -42,16 +50,17 @@ export const Search = ({ initialData }: { initialData: Data }) => {
           onChange={handleSearch}
           type="search"
           placeholder="Buscar información..."
+          defaultValue={search}
         />
       </form>
       <ul>
-        {data.map((row, index) => (
-          <li key={index}>
+        {data.map((row) => (
+          <li key={row.id}>
             <article>
               {Object.entries(row).map(([key, value]) => (
                 <p key={key}>
                   <strong>{key}: </strong>
-                  <strong>{value}</strong>
+                  {value}
                 </p>
               ))}
             </article>

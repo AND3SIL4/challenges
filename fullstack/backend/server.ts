@@ -26,9 +26,9 @@ app.post("/api/files", upload.single("file"), async (req, res) => {
   //4. Transform the buffer
   let json: Array<Record<string, string>> = [];
   try {
-    const csv = Buffer.from(file.buffer).toString("utf-8");
+    const csv = Buffer.from(file.buffer).toString("utf8");
     //5. Transform the string to json
-    json = convertCsvToJson.fieldDelimiter(';').csvStringToJson(csv);
+    json = convertCsvToJson.fieldDelimiter(',').csvStringToJson(csv);
   } catch (error) {
     return res.status(500).json({ message: "Error transforming the file" });
   }
