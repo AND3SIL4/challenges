@@ -39,6 +39,7 @@ Frameworks used
 
 - Set eslintrc in the root `"extends": "./node_modules/standard/eslintrc.json"`
 - Add the following `env: { browser: true, node: true, es2020: true },`
+- Add the following line `"dev": "sh -c 'pnpm --filter \"**\" dev'"` into the own dev script in the file `package.json`
 
 ```yaml
 packages:
