@@ -16,19 +16,32 @@ This is a a one repository multi package made in node and react
 
 Dependencies used
 
-    - ts-node
-    - express
-    - standard
-    - multer
-    - cors
-    - sooner 
+    - ts-node (typescript)
+    - express (backend)
+    - standard (eslintrc)
+    - multer (store images)
+    - cors (available cors support)
+    - sooner (pretty messages)
 
 Technologies used
+
     - JavaScript
     - Node
 
 Frameworks used
+
     - React
     - Express
 
 ---
+
+## Additional settings
+
+- Set eslintrc in the root `"extends": "./node_modules/standard/eslintrc.json"`
+- Add the following `env: { browser: true, node: true, es2020: true },`
+
+```yaml
+packages:
+  - frontend
+  - backend
+```
