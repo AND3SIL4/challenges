@@ -1,0 +1,33 @@
+.container-app {
+  display: flex;
+  flex-direction: column;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.button {
+  background-color: #22429f;
+  font-size: 1.1rem;
+}
+
+input {
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(122, 122, 122);
+  font-size: 1rem;
+  &::placeholder {
+    color: rgb(184, 184, 184);
+  }
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: bolder;
+}
+
+h2{
+  color: grey;
+}
